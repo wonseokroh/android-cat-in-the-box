@@ -140,7 +140,6 @@ export default class AppPresenter extends React.Component {
     });
 
     this._socket.on("leftTime", leftTime => {
-      console.log(leftTime, "<---- leftTime in app presenter");
       this.setState({ leftTime });
     });
 
