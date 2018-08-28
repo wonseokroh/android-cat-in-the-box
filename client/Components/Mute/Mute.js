@@ -1,9 +1,19 @@
-import React, { Component } from "react";
+import React, { Component, BackHandler } from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 class test extends Component {
   static navigationOptions = {
     header: null
   };
+
+  _handleBackPress = () => {
+    return true;
+  };
+  componentDidMount() {
+    BackHandler.addEventListener("hardwareBackPress", this._handleBackPress);
+  }
+  componentWillUnmount() {
+    BackHandler.removeEventListener("hardwareBackPress", this._handleBackPress);
+  }
   render() {
     return (
       <View style={styles.container}>

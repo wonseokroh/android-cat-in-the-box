@@ -1,5 +1,12 @@
 import React, { Component } from "react";
-import { View, Text, Image, StyleSheet, AppState } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  AppState,
+  BackHandler
+} from "react-native";
 import Store from "../store";
 
 class test extends Component {
@@ -9,8 +16,12 @@ class test extends Component {
   state = {
     appState: AppState.currentState
   };
+  _handleBackPress = () => {
+    return true;
+  };
   componentDidMount() {
     AppState.addEventListener("change", this._handleAppStateChange);
+    BackHandler.addEventListener("hardwareBackPress", this._handleBackPress);
     if (this.state.appState === "active") {
       this.timeoutHandle = setTimeout(() => {
         context.disconnectcontrol();
@@ -20,6 +31,7 @@ class test extends Component {
 
   componentWillUnmount() {
     AppState.removeEventListener("change", this._handleAppStateChange);
+    BackHandler.removeEventListener("hardwareBackPress", this._handleBackPress);
     clearTimeout(this.timeoutHandle);
   }
 

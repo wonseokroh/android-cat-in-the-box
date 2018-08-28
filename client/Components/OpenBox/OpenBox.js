@@ -7,7 +7,8 @@ import {
   Dimensions,
   TouchableWithoutFeedback,
   Animated,
-  Text
+  Text,
+  BackHandler
 } from "react-native";
 import Store from "../store";
 import { Icon } from "react-native-elements";
@@ -39,6 +40,9 @@ export default class OpenBox extends React.Component {
       tension: 40
     }).start();
   }
+  _handleBackPress = () => {
+    return true;
+  };
 
   static navigationOptions = ({ navigation }) => {
     const { params = {} } = navigation.state;
@@ -84,20 +88,14 @@ export default class OpenBox extends React.Component {
   };
   componentDidMount() {
     this.props.navigation.setParams({ openProfile: this._openProfile });
-    // navigator.geolocation.getCurrentPosition(position => {
-    //   var lat = parseFloat(position.coords.latitude);
-    //   var long = parseFloat(position.coords.longitude);
-    //   this.setState({
-    //     latitude: lat,
-    //     longitude: long
-    //   });
-    // });
+    BackHandler.addEventListener("hardwareBackPress", this._handleBackPress);
   }
   componentWillMount() {
     this.animatedValue = new Animated.Value(1);
   }
   componentWillUnmount() {
     clearTimeout(this.timeoutHandler);
+    BackHandler.removeEventListener("hardwareBackPress", this._handleBackPress);
   }
   render() {
     const animatedStyle = {

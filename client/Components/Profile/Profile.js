@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, Image, Dimensions } from "react-native";
+import { Text, View, Image, Dimensions, BackHandler } from "react-native";
 import Store from "../store";
 import { Icon } from "react-native-elements";
 import styles from "./styles";
@@ -60,9 +60,15 @@ export default class Profile extends React.Component {
       )
     };
   };
-
+  _handleBackPress = () => {
+    this.props.navigation.navigate("OpenBoxScreen");
+  };
   componentDidMount() {
     this.props.navigation.setParams({ navigation: this.props.navigation });
+    BackHandler.addEventListener("hardwareBackPress", this._handleBackPress);
+  }
+  componentWillUnmount() {
+    BackHandler.removeEventListener("hardwareBackPress", this._handleBackPress);
   }
 
   render() {

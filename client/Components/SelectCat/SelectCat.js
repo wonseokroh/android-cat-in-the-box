@@ -1,5 +1,11 @@
 import React, { Component } from "react";
-import { Text, View, AsyncStorage, Dimensions } from "react-native";
+import {
+  Text,
+  View,
+  AsyncStorage,
+  Dimensions,
+  BackHandler
+} from "react-native";
 import Cat from "../Cat/Cat";
 import styles from "./styles";
 
@@ -18,6 +24,15 @@ export default class SelectCat extends Component {
       fontSize: 17
     }
   };
+  _handleBackPress = () => {
+    return true;
+  };
+  componentDidMount() {
+    BackHandler.addEventListener("hardwareBackPress", this._handleBackPress);
+  }
+  componentWillUnmount() {
+    BackHandler.removeEventListener("hardwareBackPress", this._handleBackPress);
+  }
   render() {
     const upperCats = [1, 2, 3];
     const lowerCats = [4, 5, 6];

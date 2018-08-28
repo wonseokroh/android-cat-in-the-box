@@ -6,7 +6,8 @@ import {
   Alert,
   Dimensions,
   AsyncStorage,
-  AppState
+  AppState,
+  BackHandler
 } from "react-native";
 import { Icon } from "react-native-elements";
 import Timer from "../Timer";
@@ -71,6 +72,11 @@ export default class ChatRoom extends React.Component {
       }
     };
   };
+
+  _handleBackPress = () => {
+    this._exitChat();
+  };
+
   componentWillUpdate() {
     context.muteornot
       ? this.props.navigation.navigate("MuteScreen")
@@ -83,6 +89,7 @@ export default class ChatRoom extends React.Component {
 
   componentDidMount() {
     AppState.addEventListener("change", this._handleAppStateChange);
+    BackHandler.addEventListener("hardwareBackPress", this._handleBackPress);
     this.props.navigation.setParams({
       exitChat: this._exitChat,
       explodeChatRoom: this._explodeChatRoom
@@ -91,6 +98,7 @@ export default class ChatRoom extends React.Component {
 
   componentWillUnmount() {
     AppState.removeEventListener("change", this._handleAppStateChange);
+    BackHandler.removeEventListener("hardwareBackPress", this._handleBackPress);
   }
 
   render() {
@@ -123,14 +131,14 @@ export default class ChatRoom extends React.Component {
 
   _exitChat = store => {
     Alert.alert(
-      "채팅방을 나가시겠습니까?",
+      "고양이들을 떠날고양?",
       "",
       [
         {
           text: "나가기",
           onPress: () => {
-            store.socket.emit("leaveRoom");
-            store.resetchat();
+            context.socket.emit("leaveRoom");
+            context.resetchat();
             this.props.navigation.navigate("OpenBoxScreen");
           }
         },
