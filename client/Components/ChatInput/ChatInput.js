@@ -7,7 +7,8 @@ import {
   Image,
   Dimensions,
   TextInput,
-  AsyncStorage
+  AsyncStorage,
+  Text
 } from "react-native";
 import Store from "../store";
 
@@ -81,6 +82,11 @@ export default class ChatInput extends React.Component {
             }}
           </Store.Consumer>
         </View>
+        <Store.Consumer>
+          {store => {
+            return <Text style={styles.statetext}>{store.typing}</Text>;
+          }}
+        </Store.Consumer>
       </View>
     );
   }
@@ -115,9 +121,9 @@ export default class ChatInput extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    //backgroundColor: "#fff",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "flex-start"
   },
   textInput: {
     width: width * 0.85,
@@ -138,5 +144,11 @@ const styles = StyleSheet.create({
     marginTop: 20,
     fontWeight: "500",
     fontWeight: "bold"
+  },
+  statetext: {
+    color: "black",
+    fontSize: 15,
+    marginTop: 15,
+    fontFamily: "Goyang"
   }
 });

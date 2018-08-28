@@ -68,11 +68,6 @@ export default class ChatRoom extends React.Component {
             </Store.Consumer>
           </View>
         </AutoScroll>
-        <Store.Consumer>
-          {store => {
-            return <Text style={styles.statetext}>{store.typing}</Text>;
-          }}
-        </Store.Consumer>
         <View style={styles.chatinput}>
           <ChatInput />
         </View>
@@ -97,12 +92,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center"
-  },
-  statetext: {
-    color: "black",
-    fontSize: 15,
-    marginBottom: 5,
-    fontFamily: "Goyang"
   },
   mychat: {
     alignItems: "flex-end"
@@ -136,7 +125,7 @@ const styles = StyleSheet.create({
     width: width
   },
   chatinput: {
-    flex: 0.15,
+    flex: 0.5,
     flexDirection: "row"
   },
   subtitle: {
