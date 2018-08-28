@@ -275,9 +275,7 @@ const styles = StyleSheet.create({
     color: "black",
     fontSize: 13,
     marginTop: 5,
-    marginLeft: 2,
-    fontWeight: "500",
-    fontWeight: "bold"
+    marginLeft: 2
     //fontFamily: "Goyang"
   },
   attack: {
