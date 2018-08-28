@@ -12,7 +12,6 @@ export default (styles = StyleSheet.create({
     fontFamily: "Goyang",
     fontSize: 30,
     marginTop: 10,
-    fontWeight: "900",
     marginBottom: 10
   }
 }));

@@ -102,7 +102,6 @@ const styles = StyleSheet.create({
     color: "black",
     fontSize: 15,
     marginBottom: 5,
-    fontWeight: "500",
     fontFamily: "Goyang"
   },
   mychat: {
@@ -111,7 +110,6 @@ const styles = StyleSheet.create({
   },
   chatfont: {
     fontSize: 15,
-    fontWeight: "500",
     fontFamily: "Goyang"
   },
   eachmychat: {

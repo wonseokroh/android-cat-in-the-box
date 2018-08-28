@@ -235,8 +235,6 @@ const styles = StyleSheet.create({
   attacktext: {
     color: "black",
     fontSize: 13,
-    fontWeight: "500",
-    fontWeight: "bold",
     fontFamily: "Goyang"
   },
   subtitle: {
@@ -244,8 +242,6 @@ const styles = StyleSheet.create({
     fontSize: 13,
     marginTop: 5,
     marginLeft: 1,
-    fontWeight: "500",
-    fontWeight: "bold",
     fontFamily: "Goyang"
   },
   catImage: {
@@ -279,9 +275,7 @@ const styles = StyleSheet.create({
     color: "black",
     fontSize: 13,
     marginTop: 5,
-    marginLeft: 2,
-    fontWeight: "500",
-    fontWeight: "bold"
+    marginLeft: 2
     //fontFamily: "Goyang"
   },
   attack: {

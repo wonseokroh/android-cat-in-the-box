@@ -48,9 +48,11 @@ export default class ChatInput extends React.Component {
                       });
                     }
                   }}
-                  returnKeyType="done"
+                  returnKeyType="default"
                   autoCorrect={false}
-                  onSubmitEditing={() => {}}
+                  onSubmitEditing={() =>
+                    this._sendMessage(store.socket, this.state.message)
+                  }
                   underlineColorAndroid={"transparent"}
                 />
               );
