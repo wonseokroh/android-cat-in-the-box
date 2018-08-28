@@ -257,8 +257,8 @@ const styles = StyleSheet.create({
     borderColor: "#6dd3fe",
     borderRadius: 40,
     borderWidth: 5,
-    width: 80,
-    height: 80,
+    width: 70,
+    height: 70,
     justifyContent: "center",
     alignItems: "center"
   },
@@ -266,8 +266,8 @@ const styles = StyleSheet.create({
     borderColor: "#f4da6c",
     borderRadius: 40,
     borderWidth: 5,
-    width: 80,
-    height: 80,
+    width: 70,
+    height: 70,
     justifyContent: "center",
     alignItems: "center"
   },
