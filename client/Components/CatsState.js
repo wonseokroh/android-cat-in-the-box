@@ -550,16 +550,12 @@ const styles = StyleSheet.create({
     fontSize: 15,
     marginTop: 7,
     marginLeft: 10,
-    fontWeight: "500",
-    fontWeight: "bold",
     fontFamily: "Goyang"
     //marginBottom: 10
   },
   waiting: {
     color: "black",
     fontSize: 15,
-    fontWeight: "500",
-    fontWeight: "bold",
     marginLeft: 10,
     fontFamily: "Goyang"
     //marginBottom: 10

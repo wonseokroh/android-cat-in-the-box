@@ -19,7 +19,6 @@ export default (styles = StyleSheet.create({
     marginBottom: 50
   },
   text: {
-    fontWeight: "bold",
     fontFamily: "Goyang",
     fontSize: 30
   },

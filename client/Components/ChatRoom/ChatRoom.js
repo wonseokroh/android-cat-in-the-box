@@ -28,7 +28,6 @@ export default class ChatRoom extends React.Component {
   static navigationOptions = ({ navigation }) => {
     const { params = {} } = navigation.state;
     return {
-      title: "반갑다옹",
       headerStyle: {
         backgroundColor: "#f4da6c",
         height: height * 0.07

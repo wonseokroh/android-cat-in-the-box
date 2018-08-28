@@ -30,9 +30,7 @@ export default (styles = StyleSheet.create({
     color: "black",
     fontSize: 20,
     marginTop: 20,
-    fontFamily: "Goyang",
-    fontWeight: "500",
-    fontWeight: "bold"
+    fontFamily: "Goyang"
   },
   title: {
     color: "black",

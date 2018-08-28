@@ -63,7 +63,6 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 30,
     marginTop: 10,
-    fontWeight: "700",
     marginBottom: 10,
     fontFamily: "Goyang"
   }
