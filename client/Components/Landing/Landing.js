@@ -1,22 +1,27 @@
 import React, { Component } from "react";
-import { View, Text, Image, AsyncStorage } from "react-native";
+import { View, Text, Image, AsyncStorage, AppState } from "react-native";
 import styles from "./styles";
 
 export default class Landing extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      appState: AppState.currentState
+    };
   }
 
   static navigationOptions = {
     header: null
   };
   componentDidMount() {
+    AppState.addEventListener("change", this._handleAppStateChange);
     this.timeoutHandle = setTimeout(() => {
       this._userInfo();
     }, 3000);
   }
 
   componentWillUnmount() {
+    AppState.removeEventListener("change", this._handleAppStateChange);
     clearTimeout(this.timeoutHandle); // This is just necessary in the case that the screen is closed before the timeout fires, otherwise it would cause a memory leak that would trigger the transition regardless, breaking the user experience.
   }
 
@@ -43,5 +48,16 @@ export default class Landing extends Component {
     } catch (err) {
       console.log(err);
     }
+  };
+  _handleAppStateChange = nextAppState => {
+    if (
+      this.state.appState.match(/inactive|background/) &&
+      nextAppState === "active"
+    ) {
+      this.timeoutHandle = setTimeout(() => {
+        this._userInfo();
+      }, 1700);
+    }
+    this.setState({ appState: nextAppState });
   };
 }

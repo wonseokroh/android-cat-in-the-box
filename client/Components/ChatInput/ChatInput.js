@@ -42,6 +42,7 @@ export default class ChatInput extends React.Component {
                   multiline={false}
                   value={!this.state.clearInput ? this.state.message : null}
                   onChangeText={message => {
+                    this.props.chatInputHandler();
                     this.setState({ message: message, clearInput: false });
                     if (this.state.message.length !== 0) {
                       store.socket.emit("typing", {
@@ -49,6 +50,7 @@ export default class ChatInput extends React.Component {
                       });
                     }
                   }}
+                  onBlur={() => this.props.chatInputHandler(1)}
                   returnKeyType="send"
                   autoCorrect={false}
                   onSubmitEditing={() => {
