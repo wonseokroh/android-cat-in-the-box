@@ -99,6 +99,7 @@ export default class ChatRoom extends React.Component {
         <View style={styles.chatroom}>
           <Chat />
         </View>
+        <Text style={styles.text}>이 구역의 고양이들</Text>
         <View style={styles.options}>
           <View style={styles.catsstate}>
             <View style={styles.statespace}>
@@ -162,6 +163,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center"
+  },
+  text: {
+    fontFamily: "Goyang",
+    fontSize: 30
   },
   catsstate: {
     flex: 1,

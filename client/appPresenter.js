@@ -35,7 +35,7 @@ const AppNavigator = createStackNavigator(
     }
   }
 );
-const thisroomcats = "";
+const thisroomcats = "Typing을 기다리는 중";
 export default class AppPresenter extends React.Component {
   constructor(props) {
     super(props);
@@ -60,7 +60,7 @@ export default class AppPresenter extends React.Component {
         organizedTime: time,
         leftTime,
         chatOver: false,
-        typing: ""
+        typing: "Typing을 기다리는 중"
       });
       // console.log(leftTime, "<----- left time");
     });
@@ -155,7 +155,7 @@ export default class AppPresenter extends React.Component {
       });
       if (chat.nickname + "is typing" === this.state.typing) {
         this.setState({
-          typing: thisroomcats
+          typing: "Typing을 기다리는 중"
         });
       }
     };
