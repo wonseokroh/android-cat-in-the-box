@@ -32,13 +32,6 @@ export default (styles = StyleSheet.create({
     marginTop: 20,
     fontFamily: "Goyang"
   },
-  title: {
-    color: "black",
-    fontSize: 50,
-    marginTop: 10,
-    fontWeight: "700",
-    marginBottom: 10
-  },
   card: {
     flex: 1,
     width: width * 0.9,
