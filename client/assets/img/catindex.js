@@ -14,7 +14,11 @@ const images = {
   b3: require("./b3.png"),
   b4: require("./b4.png"),
   b5: require("./b5.png"),
-  mute: require("./mask.png")
+  mute: require("./mask.png"),
+  tut1: require("./tuto1.jpeg"),
+  tut2: require("./tuto2.jpeg"),
+  tut3: require("./tuto3.jpeg"),
+  tut4: require("./tuto4.jpeg")
 };
 
 export default images;

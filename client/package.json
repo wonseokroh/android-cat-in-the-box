@@ -28,6 +28,10 @@
     "react-native-auto-scroll": "0.0.1",
     "react-native-elements": "^0.19.1",
     "react-native-elevated-view": "^0.0.6",
+    "react-native-modal": "^6.5.0",
+    "react-native-page-swiper": "^0.3.0",
+    "react-native-really-awesome-button": "^0.8.3",
+    "react-native-swiper": "^1.5.13",
     "react-navigation": "^2.11.2",
     "socket.io-client": "^2.1.1"
   }

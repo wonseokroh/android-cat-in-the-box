@@ -8,9 +8,13 @@ import {
 } from "react-native";
 import Cat from "../Cat/Cat";
 import styles from "./styles";
+import Tutorial from "../Tutorial/Tutorial";
 
 const { width, height } = Dimensions.get("window");
 export default class SelectCat extends Component {
+  state = {
+    firstornot: false
+  };
   static navigationOptions = {
     title: "슈뢰딩거의 고양이",
     headerStyle: {
@@ -29,6 +33,7 @@ export default class SelectCat extends Component {
   };
   componentDidMount() {
     BackHandler.addEventListener("hardwareBackPress", this._handleBackPress);
+    this._isFirstTime();
   }
   componentWillUnmount() {
     BackHandler.removeEventListener("hardwareBackPress", this._handleBackPress);
@@ -38,6 +43,7 @@ export default class SelectCat extends Component {
     const lowerCats = [4, 5, 6];
     return (
       <View style={styles.body}>
+        <Tutorial />
         <View style={styles.container}>
           <View style={styles.title}>
             <Text style={styles.text}>고양이를 고를고양</Text>
@@ -66,6 +72,15 @@ export default class SelectCat extends Component {
       await this.props.navigation.navigate("OpenBoxScreen");
     } catch (err) {
       console.log(err);
+    }
+  };
+
+  _isFirstTime = async () => {
+    const first = await AsyncStorage.getItem("firstTime");
+    if (first) {
+      this.setState({
+        firstornot: true
+      });
     }
   };
 }

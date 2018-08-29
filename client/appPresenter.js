@@ -14,6 +14,7 @@ import SocketIOClient from "socket.io-client";
 import EditProfile from "./Components/EditProfile/EditProfile";
 import Mute from "./Components/Mute/Mute";
 import Disconnect from "./Components/Disconnect/Disconnect";
+import TutorialView from "./Components/Tutorial/TutorialView";
 
 const AppNavigator = createStackNavigator(
   {
@@ -26,7 +27,8 @@ const AppNavigator = createStackNavigator(
     CatComponent: { screen: Cat },
     EditProfileScreen: { screen: EditProfile },
     MuteScreen: { screen: Mute },
-    DisconnectScreen: { screen: Disconnect }
+    DisconnectScreen: { screen: Disconnect },
+    TutorialViewScreen: { screen: TutorialView }
   },
   {
     initialRouteName: "LandingScreen",
@@ -236,7 +238,8 @@ export default class AppPresenter extends React.Component {
   async componentDidMount() {
     // console.log(this.props.token);
     await Font.loadAsync({
-      Goyang: require("./assets/fonts/Goyang.otf")
+      Goyang: require("./assets/fonts/Goyang.otf"),
+      Arial: require("./assets/fonts/arial.ttf")
     });
     this.setState({ fontLoaded: true });
   }
