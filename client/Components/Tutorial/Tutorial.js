@@ -49,7 +49,7 @@ export default class SelectCat extends Component {
               }}
             >
               <Image
-                style={{ margin: 15 }}
+                style={{ margin: 15, width: 25, height: 25 }}
                 source={require("../../assets/img/cancel.png")}
               />
             </TouchableOpacity>
