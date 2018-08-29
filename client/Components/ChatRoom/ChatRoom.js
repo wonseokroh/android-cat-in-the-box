@@ -143,14 +143,14 @@ export default class ChatRoom extends React.Component {
       "",
       [
         {
-          text: "나가기",
+          text: "떠날고양",
           onPress: () => {
             context.socket.emit("leaveRoom");
             context.resetchat();
             this.props.navigation.navigate("OpenBoxScreen");
           }
         },
-        { text: "취소" }
+        { text: "더 있을고양" }
       ],
       { cancelable: false }
     );
