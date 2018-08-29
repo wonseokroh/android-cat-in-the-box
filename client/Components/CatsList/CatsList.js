@@ -12,6 +12,7 @@ import {
 } from "react-native";
 import Images from "../../assets/img/catindex";
 import Store from "../store";
+import AwesomeButtonRick from "react-native-really-awesome-button/src/themes/rick";
 
 const { width } = Dimensions.get("window");
 
@@ -47,6 +48,21 @@ export default class CatsList extends Component {
         {store => {
           return (
             <View style={styles.container}>
+              {!this.state.attackmode ? (
+                <View style={{ flex: 0.15 }} />
+              ) : this.state.myattacknum === 0 ? (
+                <View style={{ flex: 0.15 }}>
+                  <Text style={{ fontFamily: "Goyang", fontSize: 15 }}>
+                    펀치할 힘이 없습니다.
+                  </Text>
+                </View>
+              ) : (
+                <View style={{ flex: 0.15 }}>
+                  <Text style={{ fontFamily: "Goyang", fontSize: 15 }}>
+                    고양이 얼굴을 펀치하세요
+                  </Text>
+                </View>
+              )}
               <View style={styles.state}>
                 {store.roomusers.map((item, i) => {
                   return (
@@ -129,17 +145,7 @@ export default class CatsList extends Component {
                         <View style={{ flexDirection: "row", marginTop: 3 }}>
                           <Text style={styles.subtitle}>HP : </Text>
                           <Image
-                            source={
-                              item.hp > 6
-                                ? Images["b1"]
-                                : item.hp > 5
-                                  ? Images["b2"]
-                                  : item.hp > 3
-                                    ? Images["b3"]
-                                    : item.hp > 1
-                                      ? Images["b4"]
-                                      : Images["b5"]
-                            }
+                            source={Images["b" + (8 - item.hp)]}
                             style={{
                               //marginTop: 10,
                               width: 50,
@@ -157,37 +163,61 @@ export default class CatsList extends Component {
                 {!store.muteornot ? (
                   this.state.myattacknum > 0 ? (
                     this.state.attackmode ? (
-                      <TouchableOpacity
-                        disabled={this.state.attackmode ? false : true}
-                        onPress={() => {
-                          this.setState({ attackmode: false });
-                          console.log("공격 모드");
-                        }}
-                        style={styles.punching}
-                      >
-                        <Text style={styles.attacktext}>
-                          펀 치 중 ( {this.state.myattacknum} / 5 )
-                        </Text>
-                      </TouchableOpacity>
+                      <View style={styles.attackBtn}>
+                        <AwesomeButtonRick
+                          type="secondary"
+                          backgroundDarker="#DA472F"
+                          backgroundColor="#ef6f6f"
+                          backgroundActive="#DA472F"
+                          borderColor="#ef6f6f"
+                          height={40}
+                          onPress={() => {
+                            this.setState({ attackmode: false });
+                            console.log("공격 모드");
+                          }}
+                        >
+                          <Text style={styles.punchtext}>
+                            뚜 쉬 뚜 쉬 펀 치 중 ( {this.state.myattacknum} / 5
+                            )
+                          </Text>
+                        </AwesomeButtonRick>
+                      </View>
                     ) : (
-                      <TouchableOpacity
-                        onPress={() => {
-                          this.setState({
-                            attackmode: true,
-                            healingmode: false
-                          });
-                          console.log("공격 모드 해제");
-                        }}
-                        style={styles.attack}
-                      >
-                        <Text style={styles.attacktext}>
-                          냥 냥 펀 치 (click) ( {this.state.myattacknum} / 5 )
-                        </Text>
-                      </TouchableOpacity>
+                      <View style={styles.attackBtn}>
+                        <AwesomeButtonRick
+                          type="secondary"
+                          backgroundDarker="#FFB511"
+                          backgroundColor="#f4da6c"
+                          backgroundActive="#FFB511"
+                          borderColor="#f4da6c"
+                          textColor="#ef6f6f"
+                          height={40}
+                          onPress={() => {
+                            this.setState({
+                              attackmode: true,
+                              healingmode: false
+                            });
+                            console.log("공격 모드 해제");
+                          }}
+                        >
+                          <Text style={styles.attacktext}>
+                            냥 냥 펀 치 (click) ( {this.state.myattacknum} / 5 )
+                          </Text>
+                        </AwesomeButtonRick>
+                      </View>
                     )
                   ) : (
-                    <View style={styles.noenergy}>
-                      <Text style={styles.attacktext}>공 격 력 0</Text>
+                    <View style={styles.attackBtn}>
+                      <AwesomeButtonRick
+                        type="secondary"
+                        disabled={true}
+                        backgroundDarker="#968F8B"
+                        backgroundColor="#e5dfdf"
+                        borderColor="#e5dfdf"
+                        height={40}
+                      >
+                        <Text style={styles.noenergytext}>공 격 력 0</Text>
+                      </AwesomeButtonRick>
                     </View>
                   )
                 ) : (
@@ -219,8 +249,7 @@ const styles = StyleSheet.create({
   },
   attackspace: {
     flex: 0.25,
-    width: width,
-    flexDirection: "row"
+    width: width
     //backgroundColor: "#f4da6c"
   },
   eachcat: {
@@ -233,8 +262,18 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   attacktext: {
+    color: "#ef6f6f",
+    fontSize: 15,
+    fontFamily: "Goyang"
+  },
+  punchtext: {
+    color: "white",
+    fontSize: 15,
+    fontFamily: "Goyang"
+  },
+  noenergytext: {
     color: "black",
-    fontSize: 13,
+    fontSize: 15,
     fontFamily: "Goyang"
   },
   subtitle: {
@@ -275,7 +314,9 @@ const styles = StyleSheet.create({
     color: "black",
     fontSize: 13,
     marginTop: 5,
-    marginLeft: 2
+    marginLeft: 2,
+    fontWeight: "500",
+    fontWeight: "bold"
     //fontFamily: "Goyang"
   },
   attack: {
@@ -291,30 +332,13 @@ const styles = StyleSheet.create({
     marginRight: 50,
     marginBottom: 10
   },
-  noenergy: {
+  attackBtn: {
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "row",
     flex: 1,
-    backgroundColor: "#e5dfdf",
-    borderColor: "#e5dfdf",
-    borderRadius: 40,
-    borderWidth: 3,
     marginLeft: 50,
     marginRight: 50,
-    marginBottom: 10
-  },
-  punching: {
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "row",
-    flex: 1,
-    backgroundColor: "#ef6f6f",
-    borderColor: "#ef6f6f",
-    borderRadius: 40,
-    borderWidth: 3,
-    marginLeft: 50,
-    marginRight: 50,
-    marginBottom: 10
+    marginBottom: 5
   }
 });

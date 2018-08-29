@@ -182,7 +182,8 @@ const styles = StyleSheet.create({
   },
   text: {
     fontFamily: "Goyang",
-    fontSize: 30
+    fontSize: 30,
+    marginBottom: 5
   },
   catsstate: {
     flex: 1,
@@ -201,7 +202,7 @@ const styles = StyleSheet.create({
     //backgroundColor: "green"
   },
   options: {
-    flex: 0.7,
+    flex: 0.8,
     width: width * 0.9,
     justifyContent: "center",
     alignItems: "center"
