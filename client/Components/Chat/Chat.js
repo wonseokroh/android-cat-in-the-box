@@ -5,8 +5,7 @@ import {
   View,
   Image,
   Dimensions,
-  AsyncStorage,
-  TouchableWithoutFeedback
+  AsyncStorage
 } from "react-native";
 import AutoScroll from "react-native-auto-scroll";
 import Images from "../../assets/img/catindex";
@@ -28,7 +27,6 @@ export default class ChatRoom extends React.Component {
   }
 
   componentWillMount() {
-    //this._whoamI();
     this._myuserinfo();
   }
   render() {
@@ -70,7 +68,7 @@ export default class ChatRoom extends React.Component {
           </View>
         </AutoScroll>
         <View style={styles.chatinput}>
-          <ChatInput chatInputHandler={this.props.chatInputHandler} />
+          <ChatInput />
         </View>
       </View>
     );

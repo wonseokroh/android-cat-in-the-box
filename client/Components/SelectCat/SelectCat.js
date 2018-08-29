@@ -16,17 +16,19 @@ export default class SelectCat extends Component {
     firstornot: false
   };
   static navigationOptions = {
-    title: "슈뢰딩거의 고양이",
+    headerTitle: (
+      <View style={{ alignItems: "center", flex: 1 }}>
+        <Text style={{ fontFamily: "Goyang", fontSize: 17, color: "white" }}>
+          슈뢰딩거의 고양이에 온걸 환영한다옹
+        </Text>
+      </View>
+    ),
     headerStyle: {
       backgroundColor: "#f4da6c",
       height: height * 0.07
     },
-    headerLeft: null,
-    headerTintColor: "black",
-    headerTitleStyle: {
-      fontWeight: "bold",
-      fontSize: 17
-    }
+    headerLeft: <View />,
+    headerRight: <View />
   };
   _handleBackPress = () => {
     return true;

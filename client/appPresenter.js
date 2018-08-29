@@ -14,7 +14,6 @@ import SocketIOClient from "socket.io-client";
 import EditProfile from "./Components/EditProfile/EditProfile";
 import Mute from "./Components/Mute/Mute";
 import Disconnect from "./Components/Disconnect/Disconnect";
-import TutorialView from "./Components/Tutorial/TutorialView";
 
 const AppNavigator = createStackNavigator(
   {
@@ -27,8 +26,7 @@ const AppNavigator = createStackNavigator(
     CatComponent: { screen: Cat },
     EditProfileScreen: { screen: EditProfile },
     MuteScreen: { screen: Mute },
-    DisconnectScreen: { screen: Disconnect },
-    TutorialViewScreen: { screen: TutorialView }
+    DisconnectScreen: { screen: Disconnect }
   },
   {
     initialRouteName: "LandingScreen",

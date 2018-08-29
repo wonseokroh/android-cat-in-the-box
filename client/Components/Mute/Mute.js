@@ -1,6 +1,7 @@
-import React, { Component, BackHandler } from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
-class test extends Component {
+import React, { Component } from "react";
+import { View, Text, Image, StyleSheet, BackHandler } from "react-native";
+
+export default class Mute extends Component {
   static navigationOptions = {
     header: null
   };
@@ -23,7 +24,6 @@ class test extends Component {
   }
 }
 
-export default test;
 const styles = StyleSheet.create({
   container: {
     flex: 1,

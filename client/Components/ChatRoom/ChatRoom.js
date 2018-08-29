@@ -7,8 +7,7 @@ import {
   Dimensions,
   AsyncStorage,
   AppState,
-  BackHandler,
-  Keyboard
+  BackHandler
 } from "react-native";
 import { Icon } from "react-native-elements";
 import Timer from "../Timer";
@@ -86,10 +85,6 @@ export default class ChatRoom extends React.Component {
     this._exitChat();
   };
 
-  _keyboardDidShow = () => {
-    this.setState({ chating: true });
-  };
-
   componentWillUpdate() {
     context.muteornot
       ? this.props.navigation.navigate("MuteScreen")
@@ -103,10 +98,6 @@ export default class ChatRoom extends React.Component {
   componentDidMount() {
     AppState.addEventListener("change", this._handleAppStateChange);
     BackHandler.addEventListener("hardwareBackPress", this._handleBackPress);
-    this.keyboardDidShowListener = Keyboard.addListener(
-      "keyboardDidShow",
-      this._keyboardDidShow
-    );
     this.props.navigation.setParams({
       exitChat: this._exitChat,
       explodeChatRoom: this._explodeChatRoom
@@ -116,30 +107,19 @@ export default class ChatRoom extends React.Component {
   componentWillUnmount() {
     AppState.removeEventListener("change", this._handleAppStateChange);
     BackHandler.removeEventListener("hardwareBackPress", this._handleBackPress);
-    this.keyboardDidShowListener.remove();
   }
 
   render() {
     return (
       <View style={styles.container}>
         <View style={styles.chatroom}>
-          <Chat chatInputHandler={this._chatInputHandler} />
+          <Chat />
         </View>
-        {!this.state.chating ? (
-          <Text style={styles.text}>이 구역의 고양이들</Text>
-        ) : (
-          <Text style={{ fontSize: 30, color: "white" }}>
-            이 구역의 고양이들
-          </Text>
-        )}
+        <Text style={styles.text}>이 구역의 고양이들</Text>
         <View style={styles.options}>
           <View style={styles.catsstate}>
             <View style={styles.statespace}>
-              {!this.state.chating ? (
-                <CatsList myuserid={this.state.myuserid} />
-              ) : (
-                <View style={styles.options} />
-              )}
+              <CatsList myuserid={this.state.myuserid} />
             </View>
           </View>
         </View>
@@ -190,14 +170,6 @@ export default class ChatRoom extends React.Component {
       context.socket.emit("leftTime");
     }
     this.setState({ appState: nextAppState });
-  };
-
-  _chatInputHandler = e => {
-    if (e) {
-      this.setState({ chating: false });
-    } else {
-      this.setState({ chating: true });
-    }
   };
 }
 
