@@ -23,7 +23,14 @@ export default class EditProfile extends React.Component {
     };
   }
   static navigationOptions = {
-    title: "프로필 편집",
+    headerTitle: (
+      <View style={{ alignItems: "center", flex: 1 }}>
+        <Text style={{ fontFamily: "Goyang", fontSize: 17, color: "white" }}>
+          프로필 편집
+        </Text>
+      </View>
+    ),
+    headerRight: <View />,
     headerStyle: {
       backgroundColor: "#f4da6c",
       height: height * 0.07

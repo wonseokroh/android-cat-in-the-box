@@ -23,7 +23,13 @@ export default class Profile extends React.Component {
   static navigationOptions = ({ navigation }) => {
     const { params = {} } = navigation.state;
     return {
-      title: "고양이 프로필",
+      headerTitle: (
+        <View style={{ alignItems: "center", flex: 1 }}>
+          <Text style={{ fontFamily: "Goyang", fontSize: 17, color: "white" }}>
+            고양이 프로필
+          </Text>
+        </View>
+      ),
       headerStyle: {
         backgroundColor: "#f4da6c",
         height: height * 0.07

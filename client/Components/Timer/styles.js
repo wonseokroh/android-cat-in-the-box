@@ -20,6 +20,7 @@ export default (styles = StyleSheet.create({
     paddingRight: 10
   },
   text: {
-    fontSize: 18
+    fontSize: 18,
+    fontFamily: "Goyang"
   }
 }));
